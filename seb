@@ -1,0 +1,65 @@
+@ECHO OFF
+If exist "%Temp%\~import.reg" (
+ Attrib -R -S -H "%Temp%\~import.reg"
+ del /F /Q "%Temp%\~import.reg"
+ If exist "%Temp%\~import.reg" (
+  Echo Could not delete file "%Temp%\~import.reg"
+  Pause
+ )
+)
+> "%Temp%\~import.reg" ECHO Windows Registry Editor Version 5.00
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [-HKEY_CURRENT_USER\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\Common\NonVaultSpecifics\CheckoutPromptByFileExt\]
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [HKEY_CURRENT_USER\SOFTWARE\Motive\M-Files\12.0.6550.8\Client]
+>> "%Temp%\~import.reg" ECHO "CheckInWithComments"=-
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [HKEY_CURRENT_USER\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\Common]
+>> "%Temp%\~import.reg" ECHO "SkipCheckedOutWarning"=-
+>> "%Temp%\~import.reg" ECHO "CheckedOutWarningAutoCloseEnabled"=-
+>> "%Temp%\~import.reg" ECHO "CheckedOutWarningAutoCloseInSeconds"=-
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [HKEY_CURRENT_USER\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\Common\NonVaultSpecifics\CheckoutPromptByFileExt]
+>> "%Temp%\~import.reg" ECHO "DefaultBehavior"=-
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [HKEY_CURRENT_USER\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\Common\NonVaultSpecifics\CheckInReminder]
+>> "%Temp%\~import.reg" ECHO "FileCloseBehavior"=dword:00000000
+>> "%Temp%\~import.reg" ECHO "AutoCloseFocus"=-
+>> "%Temp%\~import.reg" ECHO "AutoCloseEnabled"=-
+>> "%Temp%\~import.reg" ECHO "AutoCloseTimeout"=-
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [HKEY_LOCAL_MACHINE\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\MFClient]
+>> "%Temp%\~import.reg" ECHO "ShowBalloonForOldServer"=-
+>> "%Temp%\~import.reg" ECHO "CanSuggestResultsDividing"=-
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [HKEY_LOCAL_MACHINE\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\Common]
+>> "%Temp%\~import.reg" ECHO "AllowVaultClientScripts"=-
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [HKEY_LOCAL_MACHINE\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\MFClient]
+>> "%Temp%\~import.reg" ECHO "PrepareForOfflineOnTheBackground"=-
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [-HKEY_LOCAL_MACHINE\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\MFClient\Processes\]
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [HKEY_LOCAL_MACHINE\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\MFClient]
+>> "%Temp%\~import.reg" ECHO "Drive"="M"
+>> "%Temp%\~import.reg" ECHO "VaultDataFilesSizeOnDiskInMegaBytes2"=dword:00000800
+>> "%Temp%\~import.reg" ECHO "VaultCacheSizeInMemoryInMegaBytes2"=dword:00000040
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [-HKEY_LOCAL_MACHINE\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\MFClient\Vaults\]
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [HKEY_LOCAL_MACHINE\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\MFClient\Vaults\JUNE]
+>> "%Temp%\~import.reg" ECHO "ID"=dword:00000002
+>> "%Temp%\~import.reg" ECHO "InfoTip"="Explorez ce dossier pour voir le contenu de ce coffre."
+>> "%Temp%\~import.reg" ECHO "ProtocolSequence"="ncacn_http"
+>> "%Temp%\~import.reg" ECHO "NetworkAddress"="june.esicloud.fr"
+>> "%Temp%\~import.reg" ECHO "Endpoint"="4466"
+>> "%Temp%\~import.reg" ECHO "MinimumAuthenticationLevel"=dword:00000001
+>> "%Temp%\~import.reg" ECHO "ServerVaultGUID"="{AA5691EB-B267-4C17-A41C-1EBFB9149F3A}"
+>> "%Temp%\~import.reg" ECHO "ServerVaultName"="JUNE"
+>> "%Temp%\~import.reg" ECHO "AuthType"=dword:00000003
+>> "%Temp%\~import.reg" ECHO "AutoLogin"=dword:00000000
+>> "%Temp%\~import.reg" ECHO "SPN"=""
+>> "%Temp%\~import.reg" ECHO.
+>> "%Temp%\~import.reg" ECHO [-HKEY_CURRENT_USER\SOFTWARE\Motive\M-Files\12.0.6550.8\Client\MFClient\Vaults\]
+START /WAIT REGEDIT /S "%Temp%\~import.reg"
+DEL "%Temp%\~import.reg"
